@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 class Client(discord.Client):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.chennel_id = 1164808092135985193 # update here to change chennel id
+        self.chennel_id = 1164137598994894850 # update here to change chennel id
 
     async def on_ready(self):
         logger.info(f'Logged on as {self.user}!')

@@ -9,7 +9,7 @@ import os
 
 logger = logging.getLogger(__name__)
 def get_title(news):
-    _title = news.find_element(By.CLASS_NAME, "title")
+    _title = news.find_element(By.TAG_NAME, "h2")
     return _title.text.replace("\n", "")
 
 def get_url(news):
@@ -17,7 +17,7 @@ def get_url(news):
     return _url.get_attribute("href")
 
 def get_time(news):
-    _time = news.find_element(By.CLASS_NAME, "time").text
+    _time = news.find_element(By.TAG_NAME, "time").text
     return datetime.datetime(datetime.datetime.now().year, int(_time[0:2]), int(_time[3:5]), int(_time[7:9]), int(_time[10:12]))
 
 def read_file():
@@ -51,7 +51,7 @@ def start_crawler():
             rt[0].remove();
         }
     """)
-    news_list = driver.find_elements(By.CLASS_NAME, "news-list-item")
+    news_list = driver.find_elements(By.CLASS_NAME, "news-list__item")
 
     results = []
     for news in news_list:
