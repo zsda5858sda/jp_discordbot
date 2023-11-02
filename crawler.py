@@ -17,8 +17,8 @@ def get_url(news):
     return _url.get_attribute("href")
 
 def get_time(news):
-    _time = news.find_element(By.TAG_NAME, "time").text
-    return datetime.datetime(datetime.datetime.now().year, int(_time[0:2]), int(_time[3:5]), int(_time[7:9]), int(_time[10:12]))
+    _time = news.find_element(By.TAG_NAME, "time")
+    return datetime.datetime.strptime(_time.get_attribute('datetime'), '%Y-%m-%d %H:%M:%S')
 
 def read_file():
     f = open("news.txt", 'r', encoding='utf-8')
